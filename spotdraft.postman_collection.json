@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "d6688328-f3a2-49ce-ae34-b0817deb3236",
+		"name": "spotdraft",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "planets list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/planets/?name=ANt",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"planets",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ANt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet add ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "new planet 1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/planets/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"planets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planet favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "custom_name",
+							"value": "efsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdgefsdfdg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/planets/1/favorite/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"planets",
+						"1",
+						"favorite",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movies list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/movies/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "the",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "new movie",
+							"type": "text"
+						},
+						{
+							"key": "release_date",
+							"value": "2022-01-23",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/movies/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "custom_name",
+							"value": "nnnn",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/movies/1/favorite/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						"1",
+						"favorite",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
