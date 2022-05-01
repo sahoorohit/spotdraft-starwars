@@ -35,7 +35,7 @@ class PlanetView(APIView):
         planet_serializer.save()
         data = {
             "msg": "Planet created successfully.",
-            "planets": planet_serializer.data,
+            "details": planet_serializer.data,
         }
         return JsonResponse(status=status.HTTP_201_CREATED, data=data)
 
@@ -63,4 +63,4 @@ class PlanetFavoriteView(APIView):
             "msg": "Favorite planet added.",
             "details": planet_serializer.data,
         }
-        return JsonResponse(status=status.HTTP_200_OK, data=data)
+        return JsonResponse(status=status.HTTP_201_CREATED, data=data)
