@@ -108,6 +108,30 @@ class PlanetListTest(APITestCase):
         self.assertTrue(first_planet['url'].endswith(reverse("planet_detail", args=(1,))))
 
 
+class PlanetDetailTest(APITestCase):
+
+    def url(self, id: int) -> str:
+        return reverse('planet_detail', args=(id,))
+
+    def test_get_movie_detail_when_id_is_invalid__failure(self):
+        response = self.client.get(self.url(id=1))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_get_movie_detail_when_id_is_valid__success(self):
+        planet_name = "Planet 1"
+        Planet.objects.create(name=planet_name)
+
+        response = self.client.get(self.url(id=1))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response_body = json.loads(response.content)
+        self.assertEqual(response_body['msg'], "Planet details fetched successfully.")
+        self.assertEqual(response_body['details']['name'], planet_name)
+        self.assertFalse(response_body['details']['is_favorite'])
+        self.assertIsNotNone(response_body['details']['created_at'])
+        self.assertIsNotNone(response_body['details']['updated_at'])
+
+
 class PlanetFavoriteTest(APITestCase):
 
     def url(self, id: int) -> str:

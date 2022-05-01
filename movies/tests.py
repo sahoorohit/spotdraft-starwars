@@ -124,6 +124,32 @@ class MovieListTest(APITestCase):
         self.assertTrue(first_movie['url'].endswith(reverse("movie_detail", args=(2,))))
 
 
+class MovieDetailTest(APITestCase):
+
+    def url(self, id: int) -> str:
+        return reverse('movie_detail', args=(id,))
+
+    def test_get_movie_detail_when_id_is_invalid__failure(self):
+        response = self.client.get(self.url(id=1))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_get_movie_detail_when_id_is_valid__success(self):
+        movie_name = "Movie 1"
+        release_date = "2022-05-01"
+        Movie.objects.create(name=movie_name, release_date=release_date)
+
+        response = self.client.get(self.url(id=1))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response_body = json.loads(response.content)
+        self.assertEqual(response_body['msg'], "Movie details fetched successfully.")
+        self.assertEqual(response_body['details']['name'], movie_name)
+        self.assertFalse(response_body['details']['is_favorite'])
+        self.assertEqual(response_body['details']['release_date'], release_date)
+        self.assertIsNotNone(response_body['details']['created_at'])
+        self.assertIsNotNone(response_body['details']['updated_at'])
+
+
 class MovieFavoriteTest(APITestCase):
 
     def url(self, id: int) -> str:
